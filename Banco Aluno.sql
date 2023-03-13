@@ -1,0 +1,73 @@
+
+--CRIAÇÃO DO BANC DE DADOS 
+CREATE DATABASE AULA1
+USE  AULA1
+
+--CRIAÇÃO DA TABELA
+CREATE TABLE ALUNO(
+ID INT, 
+NOME VARCHAR(20),
+CURSO VARCHAR(20)
+)
+
+ALTER TABLE ALUNO 
+ADD ENDERECO VARCHAR(50)
+
+--DROP TABLE ALUNO
+
+--INSERIR DADOS
+INSERT INTO ALUNO (ID, NOME, CURSO) VALUES (1, 'Vitor Lassen', 'Análise de Sistema');
+INSERT INTO ALUNO (CURSO, ID, NOME) VALUES ('Análise de Sistema', 2, 'Willian ');
+INSERT INTO ALUNO (CURSO, ID, NOME, ENDERECO) VALUES ('Análise de Sistema', 3, 'Marcus ', '');
+INSERT INTO ALUNO (CURSO, ID) VALUES ('Análise de Sistema', 4);
+INSERT INTO ALUNO VALUES (5, 'Raphael', 'Programação', 'Rua Girassois')
+
+
+INSERT INTO ALUNO (ID, NOME, CURSO) VALUES (6, 'Maria', 'Análise de Sistema'),
+										   (7, 'Manuel', 'Letras')
+
+INSERT INTO ALUNO (CURSO, ID, NOME) VALUES ('Análise de Sistema', 8, 'Willian');
+
+INSERT INTO ALUNO (CURSO, ID, NOME) VALUES ('Letras', 9, 'Willian ');
+
+--Select Simples  
+SELECT ID,  CURSO, NOME, ENDERECO FROM ALUNO
+
+SELECT * FROM ALUNO
+
+
+--selects com where 
+SELECT * FROM ALUNO
+WHERE ID = 2
+
+SELECT * FROM ALUNO
+WHERE ID <> 2
+
+SELECT * FROM ALUNO
+WHERE NOME = 'willian' and CURSO = 'Letras' 
+
+SELECT * FROM ALUNO
+WHERE (NOME = 'Willian' and CURSO = 'Letras' ) or CURSO = 'Letras'
+
+
+--Select com Like
+SELECT * FROM ALUNO
+WHERE NOME like '%n%' 
+
+
+--DELETAR
+BEGIN TRAN 
+DELETE ALUNO
+WHERE ID = 8
+
+
+--ATUALIZAR 
+BEGIN TRAN 
+
+UPDATE ALUNO
+SET CURSO = 'Letras'
+WHERE ID = 5
+
+ROLLBACK 
+COMMIT
+
